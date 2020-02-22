@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.black26,
       body: Container(),
       appBar: AppBar(
         backgroundColor: Colors.white30,
-        leading:  Icon(Icons.video_library, size: 40.0),
-        title: Text('FMovieDB', style: TextStyle(fontSize: 20.0, color: Colors.white),),
+        leading: InkWell(
+          child: Icon(
+            Icons.video_library,
+            size: 40.0,
+            color: Colors.white,
+          ),
+          onTap: () {
+            _scaffoldKey.currentState.openDrawer();
+          },
+        ),
+        title: Text(
+          'FMovieDB',
+          style: TextStyle(fontSize: 20.0, color: Colors.white),
+        ),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -28,6 +43,72 @@ class Home extends StatelessWidget {
             ),
           )
         ],
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.black,
+          child: ListView(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text('Temitope Omotunde'),
+                accountEmail: Text('topeomot@gmail.com'),
+                currentAccountPicture: CircleAvatar(
+                  radius: 90.0,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              ListTile(
+                title: Text(
+                  "Home",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.w600),
+                ),
+                leading: Icon(
+                  Icons.home,
+                  color: Colors.white,
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                color: Colors.white,
+              ),
+              ListTile(
+                title: Text(
+                  "Movies",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.w600),
+                ),
+                leading: Icon(
+                  Icons.movie,
+                  color: Colors.white,
+                ),
+                onTap: () {},
+              ),
+              Divider(
+                color: Colors.white,
+              ),
+              ListTile(
+                title: Text(
+                  "TV Shows",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.w600),
+                ),
+                leading: Icon(
+                  Icons.tv,
+                  color: Colors.white,
+                ),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
