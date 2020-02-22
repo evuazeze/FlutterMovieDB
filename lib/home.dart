@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  final String title;
-
-  const Home({Key key, this.title}) : super(key: key);
-
   @override
-  Widget build(BuildContext  context) {
-    return Container(
-      color: Colors.white,
-      child: Center(child:
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(title, style: TextStyle(color: Colors.black54, fontSize: 24.0),),
-          Icon(Icons.video_library)
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black26,
+      body: Container(),
+      appBar: AppBar(
+        backgroundColor: Colors.white30,
+        leading:  Icon(Icons.video_library, size: 40.0),
+        title: Text('FMovieDB', style: TextStyle(fontSize: 20.0, color: Colors.white),),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.search,
+              size: 30.0,
+              color: Colors.white,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.person,
+              size: 30.0,
+              color: Colors.white,
+            ),
+          )
         ],
-      ),),
+      ),
     );
   }
 }
