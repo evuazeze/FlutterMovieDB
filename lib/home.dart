@@ -8,7 +8,9 @@ class Home extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.black26,
-      body: Container(),
+      body: Container(
+        child: Text('Movie List', style: TextStyle(color: Colors.white),),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white30,
         leading: InkWell(
