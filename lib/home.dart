@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+import './services/api.dart';
+
+
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  Future inTheatreMovies;
+
+  @override
+  void initState() {
+    super.initState();
+    var api = new Api();
+    inTheatreMovies = api.inTheatres();
+  }
 
   @override
   Widget build(BuildContext context) {
